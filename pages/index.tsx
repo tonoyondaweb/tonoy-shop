@@ -1,26 +1,25 @@
-import { useState } from "react";
 import tw from "twin.macro";
 import { sanityClient } from "../utils/sanity";
 import { ProductsType } from "../types/dataTypes";
+import ProductList from "../components/products/ProductList";
+import Head from "next/head";
 
 type Props = {
 	products: ProductsType;
 };
-const Home = ({ products }: Props) => {
-	const Container = tw.div`h-screen grid place-items-center bg-biege-1`;
-	const ProductsListWrapper = tw.div`border p-2 space-y-2 rounded border-biege-4`;
-	const ProductContainer = tw.div`border p-1 rounded border-biege-4 text-brown-4`;
 
+const Container = tw.div`min-h-[calc(100vh-3.24rem)] grid place-items-center`;
+
+const Home = ({ products }: Props) => {
 	return (
-		<Container>
-			<ProductsListWrapper>
-				{products.map((product) => (
-					<ProductContainer key={product._id}>
-						{product.name}
-					</ProductContainer>
-				))}
-			</ProductsListWrapper>
-		</Container>
+		<>
+			<Head>
+				<title>tonoyShop - Home</title>
+			</Head>
+			<Container>
+				<ProductList products={products} />
+			</Container>
+		</>
 	);
 };
 export default Home;

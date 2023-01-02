@@ -6,6 +6,7 @@ export type ProductType = {
 	image: SanityImageSource;
 	description: string;
 	price: number;
+	slug: { current: string };
 };
 
 export type ProductsType = ProductType[];
