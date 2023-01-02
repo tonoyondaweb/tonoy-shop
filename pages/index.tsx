@@ -2,7 +2,7 @@ import { useState } from "react";
 import tw from "twin.macro";
 
 type Props = {};
-const index = (props: Props) => {
+const Home = (props: Props) => {
 	const [count, setCount] = useState(0);
 
 	const Container = tw.div`h-screen grid place-items-center bg-biege-1`;
@@ -18,4 +18,4 @@ const index = (props: Props) => {
 		</Container>
 	);
 };
-export default index;
+export default Home;
