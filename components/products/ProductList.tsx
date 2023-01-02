@@ -6,7 +6,7 @@ type Props = {
 	products: ProductsType;
 };
 
-const Container = tw.div`max-w-[750px] grid grid-cols-2 gap-3 py-5 px-3 items-stretch md:grid-cols-3 md:gap-5`;
+const Container = tw.div`max-w-[500px] grid grid-cols-2 gap-3 py-5 px-3 items-stretch md:max-w-[750px] md:grid-cols-3 md:gap-5`;
 
 const ProductList = ({ products }: Props) => {
 	return (

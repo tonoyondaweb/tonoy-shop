@@ -1,10 +1,16 @@
-// next.config.js
 const withTwin = require("./withTwin.js");
 
 /**
  * @type {import('next').NextConfig}
  */
 module.exports = withTwin({
-	reactStrictMode: true, // < Recommended by Next
-	// ...
+	reactStrictMode: true,
+	images: {
+		remotePatterns: [
+			{
+				protocol: "https",
+				hostname: "cdn.sanity.io",
+			},
+		],
+	},
 });
