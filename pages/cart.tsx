@@ -19,7 +19,7 @@ const HomeRedirectAnchor = tw(
 	Link
 )`mt-5 flex items-center justify-center text-lg gap-x-3 bg-biege-2 p-3 border-[2px] border-biege-4 transition-all hover:bg-biege-3/50 hover:-translate-y-1 hover:shadow-biege-4 hover:shadow-[6px_6px_0_-2px]`;
 
-const Title = tw.h1`text-3xl font-bold px-5 py-2`;
+const Title = tw.h1`text-3xl text-center font-bold px-5 py-2`;
 const CheckoutButton = tw.button`w-full max-w-[500px] mx-auto flex items-center justify-center text-lg gap-x-3 bg-biege-2 p-3 border-[2px] border-biege-4 transition-all hover:bg-biege-3/50 hover:-translate-y-1 hover:shadow-biege-4 hover:shadow-[6px_6px_0_-2px]`;
 
 const Cart = (props: Props) => {

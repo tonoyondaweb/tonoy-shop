@@ -11,7 +11,7 @@ type Props = {
 	item: CartItemType;
 };
 
-const Container = tw.div`max-w-[900px] mx-auto border-b border-biege-4 p-3`;
+const Container = tw.div`max-w-[700px] mx-auto border-b border-biege-4 p-3`;
 const TitleWrapper = tw.div`flex gap-x-7 justify-between`;
 const PriceWrap = tw.div`text-lg flex gap-x-[0.5rem] justify-between mt-3`;
 const ProductImage = tw(

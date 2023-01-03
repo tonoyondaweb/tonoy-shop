@@ -19,7 +19,7 @@ type Props = {
 	product: ProductType;
 };
 
-const Container = tw.div`w-full max-w-[400px] mx-auto flex border bg-biege-2 border-biege-4 sticky bottom-6 text-lg gap-x-3 p-3 shadow-[5px_5px_0_-1px] shadow-biege-4 md:static md:mt-5 md:bg-transparent`;
+const Container = tw.div`w-full max-w-[400px] mx-auto flex border bg-biege-2 border-biege-4 sticky bottom-6 text-lg gap-x-3 p-3 shadow-[5px_5px_0_-1px] shadow-biege-4 md:static md:mt-5 md:bg-transparent md:shadow-transparent md:border-0`;
 const QuantityWrapper = tw.div`flex items-center border-[2px] border-biege-4 px-2 gap-x-1 flex-1`;
 const Quantity = tw.span`flex-1 border-x-[2px] border-biege-4`;
 const QuantityButton = tw.button`flex-1 flex justify-center my-2 py-2 transition-colors active:bg-biege-4 hover:bg-biege-3/50`;
