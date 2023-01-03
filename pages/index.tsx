@@ -8,7 +8,7 @@ type Props = {
 	products: ProductsType;
 };
 
-const Container = tw.div`min-h-[calc(100vh-3.24rem)] grid place-items-center`;
+const Container = tw.div`min-h-[calc(100vh-5.74rem)] grid place-items-center`;
 
 const Home = ({ products }: Props) => {
 	return (
