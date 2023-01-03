@@ -1,5 +1,10 @@
 import { ReactNode, createContext, useContext, useState } from "react";
-import { AppContextType, CartItemsType, ProductType } from "../types/dataTypes";
+import {
+	AppContextType,
+	CartItemType,
+	CartItemsType,
+	ProductType,
+} from "../types/dataTypes";
 
 type Props = {
 	children: ReactNode;
@@ -13,9 +18,9 @@ const AppContextProvider = ({ children }: Props) => {
 
 	const addToCart = (product: ProductType, quantity: number) => {
 		const checkInCart = cartItems.find((item) => item._id === product._id);
+		setTotalPrice((prevPrice) => prevPrice + product.price * quantity);
 
 		if (checkInCart) {
-			setTotalPrice((prevPrice) => prevPrice + product.price * quantity);
 			setCartItems((prevItems) =>
 				prevItems.map((item) => {
 					if (item._id === product._id)
@@ -35,9 +40,24 @@ const AppContextProvider = ({ children }: Props) => {
 			});
 	};
 
+	const deleteItem = (cartItem: CartItemType) => {
+		setTotalPrice(
+			(prevPrice) => prevPrice - cartItem.price * cartItem.quantity
+		);
+		setCartItems((prevCartItem) =>
+			prevCartItem.filter((item) => item._id !== cartItem._id)
+		);
+	};
+
 	return (
 		<AppContext.Provider
-			value={{ displayCart, cartItems, totalPrice, addToCart }}
+			value={{
+				displayCart,
+				cartItems,
+				totalPrice,
+				addToCart,
+				deleteItem,
+			}}
 		>
 			{children}
 		</AppContext.Provider>

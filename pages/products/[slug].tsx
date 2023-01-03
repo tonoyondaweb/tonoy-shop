@@ -18,7 +18,7 @@ const ProductWrapper = tw.div`w-full max-w-[900px] gap-x-5 py-3 md:flex md:py-11
 const ProductInfo = tw.div`px-3 py-7 text-center flex-1 justify-center md:flex md:flex-col md:h-[calc(100vh-12.75rem)] md:sticky md:top-[8.7rem]`;
 const ProductImage = tw(
 	Image
-)`w-[300px] mx-auto object-cover border border-biege-4 shadow-[10px_10px_0_-4px] shadow-biege-4/75`;
+)`w-[290px] mx-auto object-cover border border-biege-4 shadow-[10px_10px_0_-4px] shadow-biege-4/75`;
 const Name = tw.h1`text-2xl`;
 const Price = tw.span`text-xl font-semibold`;
 const Description = tw.p`p-2 mb-7 md:hidden`;

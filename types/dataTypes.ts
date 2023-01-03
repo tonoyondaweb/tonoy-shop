@@ -22,4 +22,5 @@ export type AppContextType = {
 	cartItems: CartItemsType;
 	totalPrice: number;
 	addToCart: (product: ProductType, quantity: number) => void;
+	deleteItem: (cartItem: CartItemType) => void;
 };
