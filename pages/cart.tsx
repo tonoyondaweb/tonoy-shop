@@ -12,9 +12,9 @@ import CartItem from "../components/cart/CartItem";
 import Link from "next/link";
 
 const Container = tw.div`min-h-[calc(100vh-5.74rem)] flex flex-col justify-between`;
-const CartItemsWrapper = tw.div`flex-1 flex p-5`;
-const CheckOutWrapper = tw.div`border-t-[2px] border-biege-4 p-5 sticky bottom-0 bg-biege-2`;
-const EmptyCartWrapper = tw.div`border flex-1 text-3xl grid place-items-center`;
+const CartItemsWrapper = tw.div`flex-1 p-5`;
+const CheckOutWrapper = tw.div`border-t-[2px] flex border-biege-4 p-5 sticky bottom-0 bg-biege-2`;
+const EmptyCartWrapper = tw.div`h-full text-3xl text-center`;
 const HomeRedirectAnchor = tw(
 	Link
 )`mt-5 flex items-center justify-center text-lg gap-x-3 bg-biege-2 p-3 border-[2px] border-biege-4 transition-all hover:bg-biege-3/50 hover:-translate-y-1 hover:shadow-biege-4 hover:shadow-[6px_6px_0_-2px]`;
@@ -39,13 +39,11 @@ const Cart = (props: Props) => {
 						))
 					) : (
 						<EmptyCartWrapper>
-							<div>
-								<span>Your cart is empty :(</span>
-								<HomeRedirectAnchor href="/">
-									Continue shopping
-									<AiOutlineArrowRight />
-								</HomeRedirectAnchor>
-							</div>
+							<span>Your cart is empty :(</span>
+							<HomeRedirectAnchor href="/">
+								Continue shopping
+								<AiOutlineArrowRight />
+							</HomeRedirectAnchor>
 						</EmptyCartWrapper>
 					)}
 				</CartItemsWrapper>
