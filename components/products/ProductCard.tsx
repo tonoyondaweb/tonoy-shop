@@ -9,7 +9,7 @@ type Props = {
 };
 
 const LinkContainer = tw(Link)``;
-const Container = tw.div`h-full border border-biege-4 rounded transition-all hover:bg-biege-2/50 hover:-translate-y-1 hover:shadow-biege-4 hover:shadow-[5px_5px]`;
+const Container = tw.div`h-full border border-biege-4 transition-all hover:bg-biege-2/50 hover:-translate-y-1 hover:shadow-biege-4/50 hover:shadow-[5px_5px_0_-2px]`;
 const ProductImage = tw(Image)`aspect-square object-cover rounded-t`;
 const Details = tw.div`flex flex-col p-3`;
 const Name = tw.span`text-lg whitespace-nowrap overflow-hidden text-ellipsis`;
