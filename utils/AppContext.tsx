@@ -73,6 +73,13 @@ const AppContextProvider = ({ children }: Props) => {
 		);
 	};
 
+	const emptyCart = () => {
+		setCartItems([]);
+		setTotalPrice(0);
+		localStorage.setItem("cart", JSON.stringify(cartItems));
+		localStorage.setItem("totalPrice", JSON.stringify(totalPrice));
+	};
+
 	return (
 		<AppContext.Provider
 			value={{
@@ -80,6 +87,7 @@ const AppContextProvider = ({ children }: Props) => {
 				totalPrice,
 				addToCart,
 				deleteItem,
+				emptyCart,
 			}}
 		>
 			{children}
