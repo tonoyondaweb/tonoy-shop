@@ -3,6 +3,7 @@ import {
 	createContext,
 	useContext,
 	useEffect,
+	useRef,
 	useState,
 } from "react";
 import {
@@ -18,6 +19,7 @@ type Props = {
 
 export const AppContext = createContext<AppContextType | null>(null);
 const AppContextProvider = ({ children }: Props) => {
+	const initalRender = useRef(true);
 	const [cartItems, setCartItems] = useState<CartItemsType | []>([]);
 	const [totalPrice, setTotalPrice] = useState(0);
 
@@ -27,8 +29,9 @@ const AppContextProvider = ({ children }: Props) => {
 	}, []);
 
 	useEffect(() => {
-		if (cartItems.length > 0)
-			localStorage.setItem("cart", JSON.stringify(cartItems));
+		initalRender.current
+			? (initalRender.current = false)
+			: localStorage.setItem("cart", JSON.stringify(cartItems));
 	}, [cartItems]);
 
 	const addToCart = (product: ProductType, quantity: number) => {
