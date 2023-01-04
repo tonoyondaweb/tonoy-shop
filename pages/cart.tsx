@@ -10,6 +10,8 @@ import { AppContext } from "../utils/AppContext";
 import { AppContextType } from "../types/dataTypes";
 import CartItem from "../components/cart/CartItem";
 import Link from "next/link";
+import Stripe from "stripe";
+import getStripe from "../utils/get-stripe";
 
 const Container = tw.div`min-h-[calc(100vh-5.74rem)] flex flex-col justify-between`;
 const CartItemsWrapper = tw.div`flex-1 p-5`;
@@ -24,6 +26,24 @@ const CheckoutButton = tw.button`w-full max-w-[500px] mx-auto flex items-center 
 
 const Cart = (props: Props) => {
 	const { cartItems, totalPrice } = useContext(AppContext) as AppContextType;
+
+	const handleStripeCheckout = async () => {
+		const stripe = await getStripe();
+		const checkoutSession: Stripe.Checkout.Session = await fetch(
+			"/api/stripe-checkout",
+			{
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({ items: cartItems }),
+			}
+		).then((res) => res.json());
+
+		const result = await stripe?.redirectToCheckout({
+			sessionId: checkoutSession.id,
+		});
+	};
 
 	return (
 		<>
@@ -49,7 +69,7 @@ const Cart = (props: Props) => {
 				</CartItemsWrapper>
 				{cartItems.length > 0 && (
 					<CheckOutWrapper>
-						<CheckoutButton>
+						<CheckoutButton onClick={handleStripeCheckout}>
 							<span>Total: ₹{totalPrice}</span>
 							<RxDividerVertical />
 							Check Out

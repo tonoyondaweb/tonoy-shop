@@ -24,14 +24,19 @@ const AppContextProvider = ({ children }: Props) => {
 	const [totalPrice, setTotalPrice] = useState(0);
 
 	useEffect(() => {
-		const localCart = localStorage.getItem("cart");
-		if (localCart !== null) setCartItems(JSON.parse(localCart as string));
+		const localCart = JSON.parse(localStorage.getItem("cart")!);
+		if (localCart !== null) setCartItems(localCart);
+
+		const localPrice = JSON.parse(localStorage.getItem("totalPrice")!);
+		if (totalPrice !== null) setTotalPrice(localPrice);
 	}, []);
 
 	useEffect(() => {
-		initalRender.current
-			? (initalRender.current = false)
-			: localStorage.setItem("cart", JSON.stringify(cartItems));
+		if (initalRender.current) initalRender.current = false;
+		else {
+			localStorage.setItem("cart", JSON.stringify(cartItems));
+			localStorage.setItem("totalPrice", JSON.stringify(totalPrice));
+		}
 	}, [cartItems]);
 
 	const addToCart = (product: ProductType, quantity: number) => {
