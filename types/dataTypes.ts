@@ -7,6 +7,7 @@ export type ProductType = {
 	description: string;
 	price: number;
 	slug: { current: string };
+	category: string;
 };
 
 export type ProductsType = ProductType[];
