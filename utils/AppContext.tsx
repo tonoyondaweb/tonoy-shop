@@ -1,4 +1,10 @@
-import { ReactNode, createContext, useContext, useState } from "react";
+import {
+	ReactNode,
+	createContext,
+	useContext,
+	useEffect,
+	useState,
+} from "react";
 import {
 	AppContextType,
 	CartItemType,
@@ -12,9 +18,18 @@ type Props = {
 
 export const AppContext = createContext<AppContextType | null>(null);
 const AppContextProvider = ({ children }: Props) => {
-	const [displayCart, setDisplayCart] = useState(false);
 	const [cartItems, setCartItems] = useState<CartItemsType | []>([]);
 	const [totalPrice, setTotalPrice] = useState(0);
+
+	useEffect(() => {
+		const localCart = localStorage.getItem("cart");
+		if (localCart !== null) setCartItems(JSON.parse(localCart as string));
+	}, []);
+
+	useEffect(() => {
+		if (cartItems.length > 0)
+			localStorage.setItem("cart", JSON.stringify(cartItems));
+	}, [cartItems]);
 
 	const addToCart = (product: ProductType, quantity: number) => {
 		const checkInCart = cartItems.find((item) => item._id === product._id);
@@ -28,7 +43,7 @@ const AppContextProvider = ({ children }: Props) => {
 					else return { ...item };
 				})
 			);
-		} else
+		} else {
 			setCartItems((prevCartItem) => {
 				return [
 					...prevCartItem,
@@ -38,6 +53,7 @@ const AppContextProvider = ({ children }: Props) => {
 					},
 				];
 			});
+		}
 	};
 
 	const deleteItem = (cartItem: CartItemType) => {
@@ -52,7 +68,6 @@ const AppContextProvider = ({ children }: Props) => {
 	return (
 		<AppContext.Provider
 			value={{
-				displayCart,
 				cartItems,
 				totalPrice,
 				addToCart,

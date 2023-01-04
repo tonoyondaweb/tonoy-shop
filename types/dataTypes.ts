@@ -18,7 +18,6 @@ export interface CartItemType extends ProductType {
 export type CartItemsType = CartItemType[];
 
 export type AppContextType = {
-	displayCart: boolean;
 	cartItems: CartItemsType;
 	totalPrice: number;
 	addToCart: (product: ProductType, quantity: number) => void;
