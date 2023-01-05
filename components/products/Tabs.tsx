@@ -5,7 +5,7 @@ type Props = {
 	setCurrentTab: Dispatch<SetStateAction<string>>;
 };
 
-const Container = tw.ul`flex justify-between text-xs min-[425px]:text-base`;
+const Container = tw.ul`flex justify-between text-xs min-[400px]:text-base`;
 const Tabs = ({ setCurrentTab }: Props) => {
 	return (
 		<Container>
