@@ -1,5 +1,11 @@
 import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 
+export type BannerType = {
+	_id: string;
+	title: string;
+	image: SanityImageSource;
+};
+
 export type ProductType = {
 	_id: string;
 	name: string;
