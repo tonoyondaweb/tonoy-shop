@@ -16,17 +16,7 @@ type TabIndicatorProps = {
 };
 
 const Container = tw.div`min-h-[calc(100vh-5.74rem)]`;
-const TabWrapper = tw.div`px-3 max-w-[350px] mx-auto min-[400px]:max-w-[425px]`;
-const TabSelector = styled.div(({ currentTab }: TabIndicatorProps) => [
-	tw`w-[70px] border-[2px] border-biege-4 transition ease-out duration-300 min-[400px]:w-[90px]`,
-	currentTab === "all" && ``,
-	currentTab === "best-sellers" &&
-		tw`translate-x-[125%] min-[400px]:translate-x-[120%]`,
-	currentTab === "top-rated" &&
-		tw`translate-x-[245%] min-[400px]:translate-x-[230%]`,
-	currentTab === "new-arrival" &&
-		tw`translate-x-[365%] min-[400px]:translate-x-[345%]`,
-]);
+const TabWrapper = tw.div`px-2 py-2 max-w-[500px] mx-auto overflow-x-scroll`;
 
 const Home = ({ products }: Props) => {
 	const [currentTab, setCurrentTab] = useState("all");
@@ -37,8 +27,10 @@ const Home = ({ products }: Props) => {
 			</Head>
 			<Container>
 				<TabWrapper>
-					<Tabs setCurrentTab={setCurrentTab} />
-					<TabSelector currentTab={currentTab} />
+					<Tabs
+						currentTab={currentTab}
+						setCurrentTab={setCurrentTab}
+					/>
 				</TabWrapper>
 				{currentTab === "all" ? (
 					<ProductList products={products} />

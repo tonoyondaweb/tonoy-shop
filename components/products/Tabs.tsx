@@ -1,34 +1,48 @@
 import { Dispatch, SetStateAction } from "react";
-import tw from "twin.macro";
+import tw, { styled } from "twin.macro";
 
 type Props = {
+	currentTab: string;
 	setCurrentTab: Dispatch<SetStateAction<string>>;
 };
 
-const Container = tw.ul`flex justify-between text-xs min-[400px]:text-base`;
-const Tabs = ({ setCurrentTab }: Props) => {
+const Container = tw.ul`flex gap-x-4 w-max mx-auto text-sm sm:text-base md:gap-x-12`;
+const Tab = styled.li(
+	({ currentTab, value }: { currentTab: string; value: string }) => [
+		tw`border-b-[4px] border-b-transparent transition-colors`,
+		currentTab === value && tw`border-biege-4`,
+	]
+);
+
+const tabs = [
+	{
+		name: "All Products",
+		value: "all",
+	},
+	{
+		name: "Best Sellers",
+		value: "best-sellers",
+	},
+	{
+		name: "Top Rated",
+		value: "top-rated",
+	},
+	{
+		name: "New Arrivals",
+		value: "new-arrival",
+	},
+];
+
+const Tabs = ({ setCurrentTab, currentTab }: Props) => {
 	return (
 		<Container>
-			<li>
-				<button onClick={() => setCurrentTab("all")}>
-					All Products
-				</button>
-			</li>
-			<li>
-				<button onClick={() => setCurrentTab("best-sellers")}>
-					Best Sellers
-				</button>
-			</li>
-			<li>
-				<button onClick={() => setCurrentTab("top-rated")}>
-					Top Rated
-				</button>
-			</li>
-			<li>
-				<button onClick={() => setCurrentTab("new-arrival")}>
-					New Arrivals
-				</button>
-			</li>
+			{tabs.map((tab, index) => (
+				<Tab key={index} currentTab={currentTab} value={tab.value}>
+					<button onClick={() => setCurrentTab(tab.value)}>
+						{tab.name}
+					</button>
+				</Tab>
+			))}
 		</Container>
 	);
 };
