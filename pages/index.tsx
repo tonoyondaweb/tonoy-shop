@@ -53,8 +53,6 @@ export async function getServerSideProps() {
 	const products = await sanityClient.fetch(`*[_type == "product"]`);
 	const banners = await sanityClient.fetch(`*[_type == "banner"]`);
 
-	console.log(banners);
-
 	return {
 		props: {
 			products,
