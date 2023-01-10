@@ -1,4 +1,4 @@
-import tw, { styled } from "twin.macro";
+import tw from "twin.macro";
 import { sanityClient } from "../utils/sanity";
 import { BannerType, ProductsType } from "../types/dataTypes";
 import ProductList from "../components/products/ProductList";
